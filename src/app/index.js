@@ -20,7 +20,7 @@ exports.start = async () => {
   try {
     // await database.connect()
     // console.log('Connected to database')
-    const port = 3333
+    const port = 7000
     await app.listen(port)
     loop()
     console.log(`Connected on port ${port}`)
