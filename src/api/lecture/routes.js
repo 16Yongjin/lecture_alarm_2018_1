@@ -18,6 +18,9 @@ router.get('/my/:token', async ctx => {
 
 router.post('/register', async ctx => {
   const { token, major, lecture, gubun } = ctx.request.body
+  if (!token) {
+    return ctx.status = 401
+  }
   lecture.major = major
   delete lecture.people
   delete lecture.isEmpty
