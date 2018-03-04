@@ -5,7 +5,7 @@ const dbUtil = require('database/dump')
 
 router.get('/lectures/:id', async ctx => {
   const id = ctx.params.id
-  const gubun = ctx.query.gubun
+  const gubun = ctx.query.gubun || '1'
   const users = await getLectures(id, null, gubun)
   ctx.body = users
 })
