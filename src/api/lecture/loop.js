@@ -46,7 +46,7 @@ const looping = () => {
     const hour = + moment().format('H')
     if (9 < hour && hour < 16)
       alram()
-  }, 2000);
+  }, 3000);
 }
 
 module.exports = looping
