@@ -23,6 +23,7 @@ exports.start = async () => {
     loop()
     console.log(`Connected on port ${port}`)
   } catch (error) {
+    console.log(error)
     console.log('Something went wrong')
   }
 }
