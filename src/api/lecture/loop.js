@@ -44,7 +44,7 @@ const alram = () => {
 const looping = () => {
   setInterval(() => {
     const hour = + moment().format('H')
-    if (9 < hour && hour < 16)
+    // if (9 < hour && hour < 16)
       alram()
   }, 3000);
 }
