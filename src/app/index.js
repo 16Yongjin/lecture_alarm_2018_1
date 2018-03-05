@@ -16,14 +16,11 @@ app.use(ctx => { ctx.type = 'json' })
 
 exports.start = async () => {
   try {
-    // await database.connect()
-    // console.log('Connected to database')
     const port = 7000
     await app.listen(port)
     loop()
     console.log(`Connected on port ${port}`)
   } catch (error) {
-    console.log(error)
-    console.log('Something went wrong')
+    console.error('Something went wrong', error)
   }
 }
