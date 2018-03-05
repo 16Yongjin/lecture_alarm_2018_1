@@ -13,8 +13,7 @@ const send = (to, title, body) => {
         console.log("Successfully sent with response: ", response)
     })
     .catch(err => {
-        console.log("Something has gone wrong!")
-        console.error(err)
+        console.error("Something has gone wrong!", err)
     })
 }
 

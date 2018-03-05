@@ -3,6 +3,19 @@ const db = require('database')
 const push = require('./push')
 const getLectures = require('./getLectures')
 
+const sendWhenEmpty = async empty => {
+  empty.forEach(lecture => {
+    const users = db.lectureToUser[lecture]
+    users.forEach(user => {
+      const lec = db.users[user][lecture]
+      if (lec.sent)
+        return
+      push(user, '빈 자리 알람', `${lec.name} - ${lec.professor} 교수님 자리 났어요.`)
+      db.remove(user, lec)
+    })
+  })
+}
+
 const alram = () => {
   const majors = db.majors
 
@@ -10,34 +23,12 @@ const alram = () => {
 
   Object.entries(majors).forEach(async ([major, { list }]) => {
     const empty = await getLectures(major, list, '1')
-
-    empty.forEach(lecture => {
-      const users = db.lectureToUser[lecture]
-      users.forEach(user => {
-        const lec = db.users[user][lecture]
-        if (lec.sent)
-          return
-
-        push(user, '빈 자리 알람', `${lec.name} - ${lec.professor} 교수님 자리 났어요.`)
-        db.remove(user, lec)
-      })
-    })
+    sendWhenEmpty(empty)
   })
 
   Object.entries(librals).forEach(async ([major, { list }]) => {
     const empty = await getLectures(major, list, '2')
-
-    empty.forEach(lecture => {
-      const users = db.lectureToUser[lecture]
-      users.forEach(user => {
-        const lec = db.users[user][lecture]
-        if (lec.sent)
-          return
-
-        push(user, '빈 자리 알람', `${lec.name} - ${lec.professor} 교수님 자리 났어요.`)
-        db.remove(user, lec)     
-      })
-    })
+    sendWhenEmpty(empty)
   })
 }
 
