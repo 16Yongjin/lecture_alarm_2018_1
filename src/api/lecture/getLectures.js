@@ -39,7 +39,7 @@ const form = {
 }
 
 const parseByIndex = ($, indices) => {
-  console.time('parsing with idx')
+  // console.time('parsing with idx')
   const tr = $(
     'div.table.write.margin_top10.align_center.font-size11 tr'
   )
@@ -57,12 +57,12 @@ const parseByIndex = ($, indices) => {
 
     })
   })
-  console.timeEnd('parsing with idx')
+  // console.timeEnd('parsing with idx')
   return empty
 }
 
 const parseLectures = ($) => {
-  console.time('parsing')
+  // console.time('parsing')
   const tr = $(
     'div.table.write.margin_top10.align_center.font-size11 tr'
   )
@@ -84,7 +84,7 @@ const parseLectures = ($) => {
     lectures.push(lecture)
   })
   lectures.shift() // remove head of table
-  console.timeEnd('parsing')  
+  // console.timeEnd('parsing')  
   // console.log(lectures)
   return lectures
 }
