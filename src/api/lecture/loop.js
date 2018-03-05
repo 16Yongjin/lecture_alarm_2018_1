@@ -8,8 +8,6 @@ const sendWhenEmpty = async empty => {
     const users = db.lectureToUser[lecture]
     users.forEach(user => {
       const lec = db.users[user][lecture]
-      if (lec.sent)
-        return
       push(user, '빈 자리 알람', `${lec.name} - ${lec.professor} 교수님 자리 났어요.`)
       db.remove(user, lec)
     })
@@ -37,7 +35,7 @@ const looping = () => {
     const hour = + moment().format('H')
     if (9 < hour && hour < 16)
       alram()
-  }, 3000);
+  }, 2500);
 }
 
 module.exports = looping
