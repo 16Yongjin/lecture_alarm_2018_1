@@ -90,7 +90,7 @@ const parseLectures = ($) => {
 }
 
 const getPage = (id, gubun) => {
-  if (gubun === '1') {
+  if (gubun == '1') {
     Object.assign(form, { ag_crs_strct_cd: id })
   } else {
     Object.assign(form, { ag_compt_fld_cd: id, gubun })
