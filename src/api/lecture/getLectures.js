@@ -90,7 +90,7 @@ const parseLectures = ($) => {
 }
 
 const getPage = (id, gubun) => {
-  if (gubun == '1') {
+  if (gubun == '1' || gubun === '1' ) {
     Object.assign(form, { ag_crs_strct_cd: id })
   } else {
     Object.assign(form, { ag_compt_fld_cd: id, gubun })
@@ -108,6 +108,7 @@ const getPage = (id, gubun) => {
 }
 
 const getLectures = async (id, indices, gubun) => {
+  console.log(indices, gubun)
   try {
     const $ = await getPage(id, gubun)
     return indices ? parseByIndex($, indices) : parseLectures($)
