@@ -18,7 +18,7 @@ exports.start = async () => {
   try {
     const port = 7000
     await app.listen(port)
-    loop()
+    // loop()
     console.log(`Connected on port ${port}`)
   } catch (error) {
     console.error('Something went wrong', error)
